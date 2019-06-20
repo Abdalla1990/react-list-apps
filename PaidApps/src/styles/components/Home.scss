@@ -11,14 +11,5 @@
     -moz-animation: fadein 1.9s ease-in;
     -o-animation: fadein 1.9s ease-in;
     animation: fadein 1.9s ease-in;
-    >:not(:first-child) {
-        padding-top: 20px;
-        width: 100%;
-    }
-    >:last-child {
-        margin-bottom: 50px;
-    }
+    min-height: 40%;
 }
-
-// .promo-wrapper {}
-.small-promo-wrapper {}

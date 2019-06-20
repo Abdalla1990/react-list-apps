@@ -13,20 +13,17 @@ const DynamicPage = ({ apps, history }) => {
   return ( 
     <div className="div-container home-wrapper">
       <div className="c-plp-products-container">
-
         {apps.length === 0 && <div>LOADING</div>}
-
         {apps.map( (app, index) => (
-          <AppsListItem app={app} index={index}  onAppImageClick={handleProductClick}/>
+          <AppsListItem app={app} index={index} onAppImageClick={handleProductClick}/>
         ))}
-
       </div>
     </div>
   );
 }
 
-const mapStateToProps = ({ appsData = { results : [] } }) => ({
-  apps: buildAppsDataProps(appsData),
+const mapStateToProps = ({ appsData = { results : [] } , search}) => ({
+  apps: buildAppsDataProps(appsData)(search),
 })
 
 export default connect(mapStateToProps)(DynamicPage)

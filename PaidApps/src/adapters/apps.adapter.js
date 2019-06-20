@@ -1,6 +1,13 @@
-import { map, find , propEq} from 'ramda';
+import { map, find , propEq, pipe } from 'ramda';
 
-export const buildAppsDataProps = ({ results = [] }) => map(({ id, name, genres, artworkUrl100: image }) =>({ id, name, genres, image }) )(results);
+export const buildAppsDataProps = ({ results = [] }) => search => pipe(
+	map(({ id, name, genres, artworkUrl100: image }) =>({ id, name, genres, image }) ),
+	// (data) => {
+	// 	data.genres !== undefined && search !== "" ?
+	// 	find(propEq('name', search))(genres) : 
+	// 	data
+	// }
+)(results);
 
 export const fetchAppPayload = ( { appId: id}, { appsData } ) => { 
     const  { name, artworkUrl100, releaseDate, kind, genres, artistName, artistUrl, url }  = find( propEq('id', id) )(appsData.results);
