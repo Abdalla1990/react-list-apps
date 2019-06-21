@@ -19,24 +19,24 @@ export const fetchAppPayload = ( { appId: id}, { appsData } ) => {
 	const appGenres = genres;
 	const appDetailsFields = [
 		{
-			field: 'releaseDate',
+			field: 'Release Date',
 			value: releaseDate,
 		},
 		{
-			field: 'kind',
+			field: 'App Type',
 			value: kind
 		},
 		{
-			field: 'artistName',
+			field: 'Artist Name',
 			value: artistName
 		},
 		{
-			field: 'artistUrl',
+			field: 'Click to visit the artist page',
 			value: artistUrl,
 			type: 'url'
 		},
 		{
-			field: 'url',
+			field: 'Click to visit the app page',
 			value: url,
 			type: 'url'
 		},

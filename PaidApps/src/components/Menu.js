@@ -1,13 +1,12 @@
 import React, {useState} from 'react';
-import { Link } from 'react-router-dom';
 import Input from './Input/';
-import { connect } from 'react-redux';
-import dispatcher from './tools/dispatcher';
+import { useDispatch } from 'react-redux';
 import { setSearch } from '../actions/search';
 
-const Menu = ({ dispatch }) => {
+const Menu = () => {
   const [ searchValue, setSearchValue] = useState('');
-  dispatcher(dispatch, setSearch ,searchValue)
+  const dispatch = useDispatch();
+  dispatch(setSearch(searchValue));
   return ( 
     <div className="c-menu-container">
       <div className="c-menu-wrapper" >
@@ -17,4 +16,4 @@ const Menu = ({ dispatch }) => {
   )
 }
 
-export default connect()(Menu);
+export default Menu;

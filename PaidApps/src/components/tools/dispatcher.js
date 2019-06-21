@@ -30,7 +30,7 @@ export default (dispatch,action,params)=>{
 			reject(e);
 
 		}
-	})
+	});
 
-  return promise;
+	return promise;
 }

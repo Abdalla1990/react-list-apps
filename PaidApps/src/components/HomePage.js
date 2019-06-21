@@ -1,10 +1,11 @@
 import React from 'react';
-import {connect} from 'react-redux';
+import {useSelector} from 'react-redux';
 import { buildAppsDataProps } from '../adapters/apps.adapter';
-import dispatcher from './tools/dispatcher';
 import AppsListItem from './AppsListItem';
 
-const DynamicPage = ({ apps, history }) => {
+const HomePage = ({ history }) => {
+
+  const apps = useSelector( ({ appsData = { results : [] } , search}) => buildAppsDataProps(appsData)(search));
 
   const handleProductClick = app => {
     history.push(`/apps/${app.id}`);
@@ -23,8 +24,4 @@ const DynamicPage = ({ apps, history }) => {
   );
 }
 
-const mapStateToProps = ({ appsData = { results : [] } , search}) => ({
-  apps: buildAppsDataProps(appsData)(search),
-})
-
-export default connect(mapStateToProps)(DynamicPage)
+export default HomePage;

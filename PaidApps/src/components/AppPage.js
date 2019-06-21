@@ -1,23 +1,25 @@
 import React from 'react';
-import { connect } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { fetchAppPayload } from '../adapters/apps.adapter';
-import { Link } from 'react-router-dom';
 
 const RenderAppDetailsField = ({ field, value, type }) => 
-{ return type === 'url' ? 
-    <Link  to={value} className="c-pdp-product-description" >{ field }</Link > :
-    <span>
-      <h3 className="c-pdp-product-title">{ field }</h3>
-      <p className="c-pdp-product-description" >{ value }</p>
+{ return type === 'url' ?
+    <span className="c-pdp-product-fields_container">
+      <a  href={value} target="_blank" className="c-pdp-product-field" >{ field }</a>
+    </span>
+    :
+    <span className="c-pdp-product-fields_container">
+      <h3 className="c-pdp-product-field">{ field }</h3>
+      <p className="c-pdp-product-value" >{ value }</p>
     </span>
 }
 
 
 const RenderContent = ( { appName , appDetailsFields, appImage, appGenres} ) => (
   <div className="c-pdp-inner">
+    <h2 className="c-pdp-product-title">{appName}</h2>
     <div className="c-pdp-content-container">
       <div className="c-pdp-product-info-container">
-        <h2 className="c-pdp-product-title">{appName}</h2>
         {
           appDetailsFields.length &&
           appDetailsFields.map( props => <RenderAppDetailsField  {...props}/> )
@@ -28,15 +30,17 @@ const RenderContent = ( { appName , appDetailsFields, appImage, appGenres} ) => 
         <div className="c-plp-product-tags_container">
           {
             appGenres.length && 
-            appGenres.map( ({ name, url , id}) => <Link key={id} to={url} >{ name }</Link>)
+            appGenres.map( ({ name, url , id}) => <a key={id} href={url} target="_blank" >{ name }</a>)
           }
         </div>
       </div>
     </div>
   </div>
-)
-const AppPage = ( { appDetails } ) => {
+);
+
+const AppPage = (props) => {
   console.log({ appDetails });
+  const appDetails = useSelector(state => fetchAppPayload(props.match.params, state))
   return ( 
     <div className="c-pdp-container">
     {appDetails === undefined ?
@@ -49,7 +53,5 @@ const AppPage = ( { appDetails } ) => {
   )
 }
 
-const mapStateToProps = (state, props ) => ({
-  appDetails: fetchAppPayload(props.match.params, state),
-})
-export default connect(mapStateToProps)(AppPage);
+
+export default AppPage;
