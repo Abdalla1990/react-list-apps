@@ -2,7 +2,6 @@
 import {Router, Route,Switch } from 'react-router-dom'
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
-import Header from '../components/Header';
 import loadAppDefaultState from '../components/tools/loadAppDefaultState';
 import Menu from '../components/Menu';
 import Footer from '../components/Footer';

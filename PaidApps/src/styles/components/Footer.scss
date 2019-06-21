@@ -4,20 +4,4 @@
     display: flex;
     justify-content: space-evenly;
     background: #283038;
-    .c-logo {
-        padding: 10px;
-        @include media(">=tablet", "<desktop") {
-            width: 100px;
-            img {
-                width: 120px;
-            }
-        }
-        @include media(">=phone", "<tablet") {
-            width: 40%;
-            padding: 0;
-            img {
-                width: 100%
-            }
-        }
-    }
 }

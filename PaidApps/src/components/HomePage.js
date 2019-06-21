@@ -12,6 +12,7 @@ const DynamicPage = ({ apps, history }) => {
 
   return ( 
     <div className="div-container home-wrapper">
+    {console.log({ apps })}
       <div className="c-plp-products-container">
         {apps.length === 0 && <div>LOADING</div>}
         {apps.map( (app, index) => (
