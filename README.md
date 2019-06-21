@@ -1,9 +1,10 @@
 # React list Apps 
 
-this is a  Itunes Apps listing application , 
+this is an Itunes Apps listing application , 
 you can do the following : 
   - list all paid apps 
   - search Apps
+  - view a specific app's details
 
 
 ### How To Use It :
